@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CLIENT
+  BUSINESS_OWNER
+  ADMIN
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+model User {
+  id        String     @id @default(uuid())
+  email     String     @unique
+  password  String
+  name      String
+  role      Role       @default(CLIENT)
+
+  // Relations
+  business  Business?
+  appointments Appointment[] @relation("ClientAppointments")
+
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Business {
+  id        String       @id @default(uuid())
+  name      String
+  description String?
+  phone     String?
+  location  String?
+  
+  owner     User         @relation(fields: [ownerId], references: [id])
+  ownerId   String       @unique
+
+  services  Service[]
+  appointments Appointment[]
+
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model Service {
+  id         String     @id @default(uuid())
+  name       String
+  description String?
+  duration   Int        // in minutes
+  price      Float
+
+  business   Business   @relation(fields: [businessId], references: [id])
+  businessId String
+
+  appointments Appointment[]
+
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Appointment {
+  id         String     @id @default(uuid())
+  dateTime   DateTime
+  status     AppointmentStatus @default(PENDING)
+
+  client     User       @relation(name: "ClientAppointments", fields: [clientId], references: [id])
+  clientId   String
+
+  business   Business   @relation(fields: [businessId], references: [id])
+  businessId String
+
+  service    Service    @relation(fields: [serviceId], references: [id])
+  serviceId  String
+
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
