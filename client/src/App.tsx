@@ -1,14 +1,11 @@
-import { Routes, Route } from 'react-router-dom';
-import RegisterPage from './modules/auth/pages/RegisterPage';
+import AppRouter from './AppRouter';
 
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* TODO: Header */}
       <main className="flex-1">
-        <Routes>
-          <Route path="/register" element={<RegisterPage />} />
-        </Routes>
+        <AppRouter />
       </main>
       {/* TODO: Footer */}
     </div>
