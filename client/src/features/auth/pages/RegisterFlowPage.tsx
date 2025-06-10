@@ -50,7 +50,7 @@ export function RegisterFlowPage() {
             />
           )}
         </div>
-      </div>
+      </div> 
 
       {/* Right side - image */}
       <div className="hidden md:block w-1/2 h-full">
@@ -60,6 +60,7 @@ export function RegisterFlowPage() {
           className="w-full h-full object-cover"
         />
       </div>
+      
     </div>
 
   );
