@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { ArrowLeft, Globe, MessageCircle, Eye, EyeOff } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
 import type { RegisterFormProps } from '../types/form.types';
 import PhoneInput from 'react-phone-input-2';
+import { AuthFooter } from '../components/AuthFooter';
 
 export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterFormProps) {
   const [showPassword, setShowPassword] = useState(false);
@@ -150,16 +151,8 @@ export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterF
       </div>
 
       {/* Footer */}
-      <div className="mt-8 flex justify-center gap-8 text-sm text-[#7c3aed]">
-        <button className="flex items-center gap-1 transition-all duration-200 hover:text-[#5b21b6] group">
-          <Globe className="w-4 h-4 transition-transform duration-200 group-hover:scale-110" />
-          <span className="transition-all">English</span>
-        </button>
-        <button className="flex items-center gap-1 transition-all duration-200 hover:text-[#5b21b6] group">
-          <MessageCircle className="w-4 h-4 transition-transform duration-200 group-hover:scale-110" />
-          <span className="transition-all">Help and support</span>
-        </button>
-      </div>
+      <AuthFooter />
+
     </div>
   );
 }
