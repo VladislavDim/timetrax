@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff } from 'lucide-react';
 import type { RegisterFormProps } from '../types/form.types';
 import PhoneInput from 'react-phone-input-2';
 import { AuthFooter } from '../components/AuthFooter';
+import { BackButton } from '../components/BackButton';
 
 export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterFormProps) {
   const [showPassword, setShowPassword] = useState(false);
@@ -32,15 +33,7 @@ export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterF
   return (
     <div className="min-h-screen flex flex-col justify-between bg-white px-4 py-8">
       {/* Back button */}
-      <div className="mb-6 max-w-md w-full mx-auto">
-        <button
-          onClick={onBack}
-          className="absolute top-6 left-6 p-3 rounded-md transition hover:bg-[#ede9fe] group"
-          aria-label="Go back"
-        >
-          <ArrowLeft className="w-6 h-6 text-black transition-colors duration-200 group-hover:text-[#7c3aed]" />
-        </button>
-      </div>
+      <BackButton onClick={onBack} />
 
       {/* Form */}
       <div className="w-full max-w-md mx-auto space-y-6 pt-8">
