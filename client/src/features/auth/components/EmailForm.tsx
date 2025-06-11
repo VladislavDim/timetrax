@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { EmailFormProps } from '../types/form.types';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { BackButton } from '../components/BackButton';
 import { AuthFooter } from '../components/AuthFooter';
 
 export function EmailForm({ onSubmit, loading, error }: EmailFormProps) {
@@ -29,17 +29,9 @@ export function EmailForm({ onSubmit, loading, error }: EmailFormProps) {
 
     return (
         <div className="min-h-screen flex flex-col justify-between bg-white px-4 py-8">
+            
             {/* Back button */}
-            <div className="mb-6 max-w-md w-full mx-auto">
-                <button
-                    onClick={() => navigate(-1)}
-                    className="absolute top-6 left-6 p-3 rounded-md transition
-             hover:bg-[#ede9fe] group"
-                    aria-label="Go back"
-                >
-                    <ArrowLeft className="w-6 h-6 text-black transition-colors duration-200 group-hover:text-[#7c3aed]" />
-                </button>
-            </div>
+            <BackButton onClick={() => navigate(-1)} />
 
             {/* Centered form */}
             <div className="w-full max-w-md mx-auto space-y-8">
