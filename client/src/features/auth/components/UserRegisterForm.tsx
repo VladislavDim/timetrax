@@ -87,7 +87,7 @@ export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterF
               onChange={(value) =>
                 setFormData((prev) => ({ ...prev, phone: value }))
               }
-              inputClass="!w-full !px-4 !py-3 !text-sm !border !border-[#e5e7eb] !rounded-lg focus:!ring-2 focus:!ring-[#8b5cf6] focus:!outline-none"
+              inputClass="!w-full !pl-12 !pr-4 !py-3 !text-sm !border !border-[#e5e7eb] !rounded-lg focus:!ring-2 focus:!ring-[#8b5cf6] focus:!outline-none"
               buttonClass="!border-[#e5e7eb]"
               dropdownClass="!text-sm"
               enableSearch
@@ -101,7 +101,7 @@ export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterF
                 name="terms"
                 checked={formData.terms}
                 onChange={handleChange}
-                className="mt-1"
+                className="mt-1 accent-[#8b5cf6]"
               />
               <span>
                 I agree to the{' '}
@@ -118,7 +118,7 @@ export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterF
                 name="marketing"
                 checked={formData.marketing}
                 onChange={handleChange}
-                className="mt-1"
+                className="mt-1 accent-[#8b5cf6]"
               />
               <span>
                 I agree to receive marketing notifications with offers and news
@@ -126,18 +126,18 @@ export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterF
             </label>
           </div>
 
-           <button
-                        type="submit"
-                        disabled={loading}
-                        className="w-full text-[#7c3aed] text-sm font-medium py-3 rounded-lg
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full text-[#7c3aed] text-sm font-medium py-3 rounded-lg
                                    bg-white border-2 border-[#8b5cf6]
                                    hover:text-white
                                    hover:bg-gradient-to-r hover:from-[#8b5cf6] hover:via-[#7c3aed] hover:to-[#6d28d9]
                                    transition-all duration-200 ease-in-out
                                    disabled:opacity-50"
-                    >
-                        {loading ? 'Loading...' : 'Continue'}
-                    </button>
+          >
+            {loading ? 'Loading...' : 'Continue'}
+          </button>
 
           {error && <p className="text-sm text-red-600 text-center">{error}</p>}
         </form>
