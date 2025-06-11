@@ -3,7 +3,12 @@ export type EmailVerificationData = {
 };
 
 export type RegisterData = {
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
-  confirmPassword: string;
+  phone: string;
+  countryCode: string;
+  terms: boolean;
+  marketing: boolean;
 };

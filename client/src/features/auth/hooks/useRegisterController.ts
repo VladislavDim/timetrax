@@ -29,11 +29,6 @@ export function useRegisterController() {
             return;
         }
 
-        if (formData.password !== formData.confirmPassword) {
-            setError('Passwords do not match.');
-            return;
-        }
-
         try {
             setLoading(true);
             await registerUser(formData);
