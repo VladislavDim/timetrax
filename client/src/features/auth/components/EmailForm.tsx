@@ -3,6 +3,7 @@ import type { EmailFormProps } from '../types/form.types';
 import { useNavigate } from 'react-router-dom';
 import { BackButton } from '../components/BackButton';
 import { AuthFooter } from '../components/AuthFooter';
+import { SubmitButton } from '../components/SubmitButton';
 
 export function EmailForm({ onSubmit, loading, error }: EmailFormProps) {
     const [email, setEmail] = useState('');
@@ -29,7 +30,7 @@ export function EmailForm({ onSubmit, loading, error }: EmailFormProps) {
 
     return (
         <div className="min-h-screen flex flex-col justify-between bg-white px-4 py-8">
-            
+
             {/* Back button */}
             <BackButton onClick={() => navigate(-1)} />
 
@@ -70,18 +71,10 @@ export function EmailForm({ onSubmit, loading, error }: EmailFormProps) {
                         )}
                     </div>
 
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className="w-full text-[#7c3aed] text-sm font-medium py-3 rounded-lg
-                                   bg-white border-2 border-[#8b5cf6]
-                                   hover:text-white
-                                   hover:bg-gradient-to-r hover:from-[#8b5cf6] hover:via-[#7c3aed] hover:to-[#6d28d9]
-                                   transition-all duration-200 ease-in-out
-                                   disabled:opacity-50"
-                    >
-                        {loading ? 'Loading...' : 'Continue'}
-                    </button>
+                    <SubmitButton loading={loading} type="submit" size="md" >
+                        Continue
+                    </SubmitButton>
+                    
                 </form>
 
                 <div className="text-center mt-6">
