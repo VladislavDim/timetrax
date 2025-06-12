@@ -4,12 +4,14 @@ import type { RegisterFormProps } from '../types/form.types';
 import PhoneInput from 'react-phone-input-2';
 import { AuthFooter } from '../components/AuthFooter';
 import { BackButton } from '../components/BackButton';
+import { SubmitButton } from '../components/SubmitButton';
 
 export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterFormProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
+    email: '',
     password: '',
     phone: '',
     countryCode: '+359',
@@ -27,6 +29,7 @@ export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterF
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Form submitted:', formData);
     onSubmit(formData);
   };
 
@@ -126,18 +129,9 @@ export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterF
             </label>
           </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full text-[#7c3aed] text-sm font-medium py-3 rounded-lg
-                                   bg-white border-2 border-[#8b5cf6]
-                                   hover:text-white
-                                   hover:bg-gradient-to-r hover:from-[#8b5cf6] hover:via-[#7c3aed] hover:to-[#6d28d9]
-                                   transition-all duration-200 ease-in-out
-                                   disabled:opacity-50"
-          >
-            {loading ? 'Loading...' : 'Continue'}
-          </button>
+          <SubmitButton loading={loading} type="submit" size="md" >
+            Continue
+          </SubmitButton>
 
           {error && <p className="text-sm text-red-600 text-center">{error}</p>}
         </form>
