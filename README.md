@@ -9,7 +9,7 @@
 ## 📌 Features
 
 ### 🔐 Authentication & Onboarding
-- Email-based step-by-step registration flow (like Fresha)
+- Multi-step registration flow for better user experience
 - Country-specific mobile number input
 - JWT-based authentication with secure password hashing
 - Form validation with server-side error handling
