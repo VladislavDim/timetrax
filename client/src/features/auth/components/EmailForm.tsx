@@ -56,7 +56,7 @@ export function EmailForm({ onSubmit, loading, error }: EmailFormProps) {
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                         <input
-                            placeholder="Email address"
+                            placeholder="example@mail.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             className={`w-full px-4 py-3 border ${localError || error
