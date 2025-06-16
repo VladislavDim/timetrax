@@ -30,8 +30,27 @@ export async function getUserById(req: Request, res: Response) {
  * @returns JSON of the created user
  */
 export async function createUser(req: Request, res: Response) {
-  const { email, password, name, role } = req.body;
-  const user = await UserService.create({ email, password, name, role });
+  const {
+    email,
+    password,
+    firstName,
+    lastName,
+    phone,
+    role,
+    acceptedTerms,
+    acceptedMarketing,
+  } = req.body;
+
+  const user = await UserService.create({
+    email,
+    password,
+    firstName,
+    lastName,
+    phone,
+    role,
+    acceptedTerms,
+    acceptedMarketing,
+  });
   res.status(201).json(user);
 }
 
