@@ -31,8 +31,8 @@ model User {
   phone               String
   role                Role         @default(CLIENT)
 
-  acceptedTerms       Boolean      @default(false)
-  acceptedTermsAt     DateTime?
+  acceptedTerms       Boolean
+  acceptedTermsAt     DateTime
   acceptedMarketing   Boolean      @default(false)
   acceptedMarketingAt DateTime?
 
