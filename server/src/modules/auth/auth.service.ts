@@ -1,6 +1,5 @@
-import prisma from "../../lib/prisma";
-import { Role } from "../../generated/prisma";
 import { generateToken, hashPassword } from "../../utils/auth";
+import { UserService } from "../user/user.service";
 
 export class AuthService {
 
@@ -17,26 +16,19 @@ export class AuthService {
         lastName: string;
         phone: string;
         acceptedTerms: boolean;
-        acceptedTermsAt: Date;
         acceptedMarketing: boolean;
-        acceptedMarketingAt?: Date;
-        role?: Role;
     }) {
         const hashedPassword = await hashPassword(data.password);
 
-        const user = await prisma.user.create({
-            data: {
-                email: data.email,
-                password: hashedPassword,
-                firstName: data.firstName,
-                lastName: data.lastName,
-                phone: data.phone,
-                acceptedTerms: data.acceptedTerms,
-                acceptedTermsAt: data.acceptedTermsAt,
-                acceptedMarketing: data.acceptedMarketing,
-                acceptedMarketingAt: data.acceptedMarketingAt || null,
-                role: data.role || "CLIENT",
-            },
+        const user = await UserService.create({
+            email: data.email,
+            password: hashedPassword,
+            role: "CLIENT",
+            firstName: data.firstName,
+            lastName: data.lastName,
+            phone: data.phone,
+            acceptedTerms: data.acceptedTerms,
+            acceptedMarketing: data.acceptedMarketing,
         });
 
         const token = generateToken({ userId: user.id });
