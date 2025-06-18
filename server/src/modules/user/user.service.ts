@@ -45,6 +45,8 @@ export class UserService {
                 phone: data.phone,
                 acceptedTerms: data.acceptedTerms,
                 acceptedMarketing: data.acceptedMarketing,
+                acceptedTermsAt: data.acceptedTerms ? new Date() : null,
+                acceptedMarketingAt: data.acceptedMarketing ? new Date() : null,
             },
         });
     }
