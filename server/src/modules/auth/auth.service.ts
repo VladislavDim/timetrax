@@ -3,12 +3,7 @@ import { UserService } from "../user/user.service";
 
 export class AuthService {
 
-    /**
-      * Registers a new user and returns a token.
-      * @param data - Object containing user details like email, password, name, and optional role.
-      * @returns A promise that resolves to an object with token and user.
-      * @throws Error if email is already in use.
-      */
+   
     static async register(data: {
         email: string;
         password: string;
