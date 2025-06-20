@@ -15,7 +15,7 @@ export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterF
     password: '',
     phone: '',
     countryCode: '+359',
-    terms: false,
+    acceptedTerms: false,
     marketing: false,
   });
 
@@ -101,8 +101,8 @@ export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterF
             <label className="flex items-start gap-2 text-sm">
               <input
                 type="checkbox"
-                name="terms"
-                checked={formData.terms}
+                name="acceptedTerms"
+                checked={formData.acceptedTerms}
                 onChange={handleChange}
                 className="mt-1 accent-[#8b5cf6]"
               />
