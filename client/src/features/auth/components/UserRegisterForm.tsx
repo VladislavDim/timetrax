@@ -53,7 +53,7 @@ export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterF
             placeholder="First name *"
             value={formData.firstName}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-[#e5e7eb] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
+            className="w-full px-4 py-3 border border-[#e5e7eb] rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-orange-500"
           />
 
           <input
@@ -61,7 +61,7 @@ export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterF
             placeholder="Last name *"
             value={formData.lastName}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-[#e5e7eb] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
+            className="w-full px-4 py-3 border border-[#e5e7eb] rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-orange-500"
           />
 
           <div className="relative">
@@ -71,12 +71,12 @@ export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterF
               placeholder="Password *"
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-4 py-3 pr-10 border border-[#e5e7eb] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
+              className="w-full px-4 py-3 pr-10 border border-[#e5e7eb] rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-orange-500"
             />
             <button
               type="button"
               onClick={() => setShowPassword((prev) => !prev)}
-              className="absolute right-3 top-3 text-gray-500 hover:text-[#8b5cf6]"
+              className="absolute right-3 top-3 text-gray-500 hover:text-orange-600"
               tabIndex={-1}
             >
               {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -90,7 +90,7 @@ export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterF
               onChange={(value) =>
                 setFormData((prev) => ({ ...prev, phone: value }))
               }
-              inputClass="!w-full !pl-12 !pr-4 !py-3 !text-sm !border !border-[#e5e7eb] !rounded-lg focus:!ring-2 focus:!ring-[#8b5cf6] focus:!outline-none"
+              inputClass="!w-full !pl-12 !pr-4 !py-3 !text-sm !border !border-[#e5e7eb] !rounded-lg focus:!ring-1 focus:!ring-orange-500 focus:!outline-none"
               buttonClass="!border-[#e5e7eb]"
               dropdownClass="!text-sm"
               enableSearch
@@ -104,11 +104,11 @@ export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterF
                 name="acceptedTerms"
                 checked={formData.acceptedTerms}
                 onChange={handleChange}
-                className="mt-1 accent-[#8b5cf6]"
+                className="mt-1 accent-orange-500"
               />
               <span>
                 I agree to the{' '}
-                <a href="#" className="text-[#8b5cf6] hover:text-[#7c3aed] underline">
+                <a href="#" className="text-orange-500 hover:text-orange-600 underline">
                   Privacy Policy, Terms of Use
                 </a>{' '}
                 and Terms of Service
@@ -121,7 +121,7 @@ export function UserRegisterForm({ onSubmit, loading, error, onBack }: RegisterF
                 name="marketing"
                 checked={formData.marketing}
                 onChange={handleChange}
-                className="mt-1 accent-[#8b5cf6]"
+                className="mt-1 accent-orange-500"
               />
               <span>
                 I agree to receive marketing notifications with offers and news
