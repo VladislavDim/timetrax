@@ -9,10 +9,10 @@ export function BackButton({ onClick }: BackButtonProps) {
     <div className="mb-6 max-w-md w-full mx-auto">
       <button
         onClick={onClick}
-        className="absolute top-6 left-6 p-3 rounded-md transition hover:bg-[#ede9fe] group"
+        className="absolute top-6 left-6 p-3 rounded-md transition hover:bg-orange-100 group"
         aria-label="Go back"
       >
-        <ArrowLeft className="w-6 h-6 text-black transition-colors duration-200 group-hover:text-[#7c3aed]" />
+        <ArrowLeft className="w-6 h-6 text-black transition-colors duration-200 group-hover:text-orange-500" />
       </button>
     </div>
   );
