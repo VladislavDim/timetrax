@@ -62,10 +62,10 @@ export function EmailForm({ onSubmit, loading, error }: EmailFormProps) {
                             className={`w-full px-4 py-3 border ${localError || error
                                 ? 'border-[#f97316]'
                                 : 'border-[#e5e7eb]'
-                                } rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]`}
+                                } rounded-lg text-sm focus:outline-none focus:border-[#f97316] focus:ring-0`}
                         />
                         {(localError || error) && (
-                            <p className="mt-1 text-sm text-[#f97316] font-medium">
+                            <p className="mt-1 text-sm text-red-500 font-medium">
                                 {localError || error}
                             </p>
                         )}
@@ -81,7 +81,7 @@ export function EmailForm({ onSubmit, loading, error }: EmailFormProps) {
                     <p className="text-base text-gray-600 font-semibold">Are you a business?</p>
                     <a
                         href="/business-login"
-                        className="text-sm text-[#8b5cf6] font-medium hover:text-[#7c3aed] transition-colors"
+                        className="text-sm text-[#f97316] font-medium hover:text-[#ea580c] transition-colors"
                     >
                         Log in as professional
                     </a>
