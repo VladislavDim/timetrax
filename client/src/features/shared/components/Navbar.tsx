@@ -1,8 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { cn } from "../../../utils/cn";
+import SearchBar from "../../home/components/SearchBar";
 
-export default function Navbar() {
+interface NavbarProps {
+    showStickySearch?: boolean;
+    searchValues?: string;
+    setSearchValue?: (value: string) => void;
+}
+
+export default function Navbar({ showStickySearch, searchValues, setSearchValue }: NavbarProps) {
     const { pathname } = useLocation();
     const [scrolled, setScrolled] = useState(false);
 
@@ -20,13 +27,14 @@ export default function Navbar() {
     return (
         <nav
             className={cn(
-                "fixed top-0 left-0 w-full px-6 py-4 z-50 transition-all duration-300",
+                "fixed top-0 left-0 w-full px-6 z-50 transition-all duration-300",
+                showStickySearch ? "py-2" : "py-4",
                 scrolled
                     ? "backdrop-blur-md bg-zinc-200/15 shadow-sm"
                     : "bg-transparent border-transparent"
             )}
         >
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                 <a href="/" className="text-black">
                     <span className="inline-flex items-center justify-center gap-0 whitespace-nowrap text-xl font-bold group cursor-pointer">
                         timetra
@@ -37,6 +45,11 @@ export default function Navbar() {
                         />
                     </span>
                 </a>
+                {showStickySearch && setSearchValue && searchValues !== undefined && (
+                    <div className="w-full lg:w-auto">
+                        <SearchBar size="navCompact" values={searchValues} onChange={setSearchValue} />
+                    </div>
+                )}
                 <div className="flex items-center gap-3">
                     <Link
                         to="/login"
