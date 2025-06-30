@@ -2,21 +2,25 @@ import { useState } from "react";
 import { Building, Scissors, MapPin, Search as SearchIcon } from "lucide-react";
 
 interface SearchBarProps {
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "navCompact";
+  values?: string[];
+  onChange?: (index: number, value: string) => void;
 }
 
-export default function SearchBar({ size = "md" }: SearchBarProps) {
+export default function SearchBar({ size = "md", values, onChange }: SearchBarProps) {
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
 
   const sizeStyles = {
     sm: "py-2 text-sm",
     md: "py-3 text-base",
+    navCompact: "py-2 text-[13px] max-w-2xl",
     lg: "py-4 text-lg",
   };
 
   const iconSize = {
     sm: 16,
     md: 18,
+    navCompact: 16,
     lg: 20,
   };
 
@@ -64,8 +68,8 @@ export default function SearchBar({ size = "md" }: SearchBarProps) {
 
   return (
     <div
-      className={`w-full max-w-6xl mx-auto flex items-center justify-center px-4 md:px-6 lg:px-0 ${
-        size === "sm" ? "max-w-md" : size === "lg" ? "max-w-7xl" : ""
+      className={`w-full mx-auto flex items-center justify-center px-4 md:px-6 lg:px-0 ${
+        size === "sm" ? "max-w-md" : size === "lg" ? "max-w-7xl" : size === "navCompact" ? "max-w-2xl" : ""
       }`}
     >
       <div
@@ -80,6 +84,8 @@ export default function SearchBar({ size = "md" }: SearchBarProps) {
             <input
               type="text"
               placeholder={placeholder}
+              value={values?.[idx] || ""}
+              onChange={(e) => onChange?.(idx, e.target.value)}
               onFocus={() => setFocusedIndex(idx)}
               onBlur={() => setFocusedIndex(null)}
               className={`${inputBaseClasses} ${sizeStyles[size]} ${isFocused(idx)} text-sm sm:text-base`}
