@@ -1,12 +1,14 @@
 import CallToAction from "../components/CallToAction";
 import Hero from "../components/Hero";
+import LatestReviews from "../components/LatestReviews";
 import RecommendedServices from "../components/RecommendedServices";
 
 export default function HomePage() {
   return (
-    <div className="bg-gradient-to-br from-[#fff7e6] via-[#ffd180] to-[#ffb74d]">
+    <div className="bg-white">
       <Hero />
       <RecommendedServices />
+      <LatestReviews />
       <CallToAction />
     </div>
   );
