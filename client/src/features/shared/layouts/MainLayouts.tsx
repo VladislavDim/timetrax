@@ -1,19 +1,20 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useSearch } from "../ contexts/SearchContext";
 
 export default function MainLayout() {
   const location = useLocation();
-
-  // Add all routes where you want to HIDE the layout components (Navbar, Footer, etc.)
   const hiddenRoutes = ["/login", "/register", "/auth"];
   const isHidden = hiddenRoutes.some((path) => location.pathname.startsWith(path));
 
+  const { showStickySearch, searchValues, setSearchValue } = useSearch();
+
   return (
     <>
-      {!isHidden && <Navbar />}
+      {!isHidden && <Navbar showStickySearch={showStickySearch} searchValues={searchValues} setSearchValue={setSearchValue} />}
 
-      <main className="min-h-screen">
+      <main className="min-h-screen pt-[120px]">
         <Outlet />
       </main>
 
