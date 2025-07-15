@@ -28,7 +28,7 @@ model User {
   password            String
   firstName           String
   lastName            String
-  phone               String
+  phone               String       @unique
   role                Role         @default(CLIENT)
 
   acceptedTerms       Boolean
